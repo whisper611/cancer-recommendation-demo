@@ -450,13 +450,12 @@ for idx, row in recommended_articles.iterrows():
 # 添加分隔线
 st.markdown("---")
 
-# 推荐分析图表
-# 推荐分析图表
-st.subheader("推荐分析")
+# 推荐分析图表 (英文版)
+st.subheader("Recommendation Analysis")
 col1, col2 = st.columns(2)
 
 with col1:
-    # 文章类型分布
+    # 文章类型分布 (英文)
     try:
         fig, ax = plt.subplots(figsize=(8, 4))
         
@@ -467,48 +466,34 @@ with col1:
         # 创建条形图
         ax.barh(sorted_types, type_counts.values, color='#1f77b4')
         
-        # 设置中文标签
-        ax.set_title("推荐文章类型分布", fontproperties=font_prop)
-        ax.set_xlabel("数量", fontproperties=font_prop)
-        ax.set_ylabel("文章类型", fontproperties=font_prop)
-        
-        # 设置刻度标签字体
-        for label in ax.get_xticklabels():
-            label.set_fontproperties(font_prop)
-        for label in ax.get_yticklabels():
-            label.set_fontproperties(font_prop)
+        # 设置英文标签
+        ax.set_title("Distribution of Recommended Article Types")
+        ax.set_xlabel("Count")
+        ax.set_ylabel("Article Type")
         
         st.pyplot(fig)
     except Exception as e:
-        st.error(f"绘制类型分布图时出错: {str(e)}")
-        # 备选方案：显示数据表格
-        st.write("推荐文章类型分布:")
+        st.error(f"Error drawing type distribution: {str(e)}")
+        st.write("Distribution of Recommended Article Types:")
         st.dataframe(type_counts)
 
 with col2:
-    # 匹配分数分布
+    # 匹配分数分布 (英文)
     try:
         fig, ax = plt.subplots(figsize=(8, 4))
         
         # 创建直方图
         sns.histplot(recommended_articles["match_score"], bins=6, kde=True, ax=ax, color='#ff7f0e')
         
-        # 设置中文标签
-        ax.set_title("文章匹配分数分布", fontproperties=font_prop)
-        ax.set_xlabel("匹配分数", fontproperties=font_prop)
-        ax.set_ylabel("文章数量", fontproperties=font_prop)
-        
-        # 设置刻度标签字体
-        for label in ax.get_xticklabels():
-            label.set_fontproperties(font_prop)
-        for label in ax.get_yticklabels():
-            label.set_fontproperties(font_prop)
+        # 设置英文标签
+        ax.set_title("Distribution of Match Scores")
+        ax.set_xlabel("Match Score")
+        ax.set_ylabel("Number of Articles")
         
         st.pyplot(fig)
     except Exception as e:
-        st.error(f"绘制分数分布图时出错: {str(e)}")
-        # 备选方案：显示数据摘要
-        st.write("匹配分数统计:")
+        st.error(f"Error drawing score distribution: {str(e)}")
+        st.write("Match Score Statistics:")
         st.write(recommended_articles["match_score"].describe())
 
 # 系统说明
