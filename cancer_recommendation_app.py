@@ -314,7 +314,7 @@ st.sidebar.subheader("Doctor Profile Details")
 st.sidebar.markdown(f"**Level:** {doctor_info['level']}")
 st.sidebar.markdown(f"**Hospital Level:** {doctor_info['hospital_level']}")
 st.sidebar.markdown(f"**Department:** {doctor_info['department']}")
-st.sidebar.markdown(f"**Specialty Cancers:** {', '.join(doctor_info['specialty']}")
+st.sidebar.markdown(f"**Specialty Cancers:** {', '.join(doctor_info['specialty'])}")  # 修复的语法错误行
 st.sidebar.markdown(f"**Years of Experience:** {doctor_info['years_exp']} years")
 
 # 推荐设置
@@ -370,8 +370,8 @@ for idx, row in recommended_articles.iterrows():
             }.get(row["type"], "📄")
             
             st.markdown(f"**Type:** {type_icon} {row['type']}")
-            st.markdown(f"**Related Cancers:** {', '.join(row['cancer_type']}")
-            st.markdown(f"**Related Departments:** {', '.join(row['department']}")
+            st.markdown(f"**Related Cancers:** {', '.join(row['cancer_type'])}")
+            st.markdown(f"**Related Departments:** {', '.join(row['department'])}")
             st.markdown(f"**Source:** {row['authority']}")
             st.markdown(f"**Impact Factor:** {row['impact_factor']}")
             st.markdown(f"**Publication Date:** {row['pub_date'].strftime('%Y-%m-%d')}")
